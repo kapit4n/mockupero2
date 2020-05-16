@@ -1,0 +1,45 @@
+
+<div class="container">
+    <h3> User Edit</h3>
+    <br />
+    <div class="alert alert-danger" role="alert" ng-show="err">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error: </span> {{err}}
+    </div>
+    <form role="form">
+        <div class="form-group">
+            <label for="name">First Name:</label>
+            <input type="text" ng-model="user.firstName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="name">Last Name:</label>
+            <input type="text" ng-model="user.lastName" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="name">User Name:</label>
+            <input type="text" ng-model="user.username" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="name">Email:</label>
+            <input type="text" ng-model="user.email" class="form-control">
+        </div>
+        <div class="control-group">
+            <!-- Password-->
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+                <input type="password" id="password" name="password" ng-model="password" placeholder="" class="input-xlarge" required>
+                <p class="help-block">Password should be at least 4 characters</p>
+            </div>
+        </div>
+        <div class="control-group">
+            <!-- Password -->
+            <label class="control-label" for="password_confirm">Password (Confirm)</label>
+            <div class="controls">
+                <input type="password" id="password_confirm" name="password_confirm" ng-model="password_confirm" placeholder="" class="input-xlarge" required>
+                <p class="help-block">Please confirm password</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success" ng-click="saveUser()">Save</button>
+        <button type="submit" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+    </form>
+</div>

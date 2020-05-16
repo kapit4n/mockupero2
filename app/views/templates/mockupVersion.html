@@ -1,0 +1,41 @@
+<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="reloadMockupVersions()" data-toggle="modal" data-target="#mockupVersionModal" title="Show Mockup Versions">
+    <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
+</button>
+<div id="mockupVersionModal" class="modal fade" role="dialog">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Versions</h3>
+            </div>
+        </div>
+        <div class="row">
+            <dir ng-repeat="versionMockup in versionMockups">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{userName}}</strong> <span class="text-muted"> Created At <time pubdate>{{versionMockup.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</time></span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="container">
+                                <div class="col-md-7">
+                                    <div>
+                                        <strong>Mockup: </strong>{{versionMockup.mockup.name}}
+                                    </div>
+                                    <div>
+                                        <strong>User: </strong>{{versionMockup.user.firstName}}
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-xs" ng-click="restore(versionMockup.id)">Restore</button>
+                                    <button type="button" class="btn btn-primary btn-xs" ng-click="deleteVersion(versionMockup.id)">Delete</button>
+                                    <button type="button" class="btn btn-primary btn-xs" ng-click="suggest(versionMockup.id)">Suggest</button>
+                                </div>
+                                <div class="col-md-5">
+                                    <img style="padding:0; width: 150px;" src="{{globalService.BASE_PATH}}/images/version/{{versionMockup.id}}.png" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </dir>
+        </div>
+    </div>
+</div>

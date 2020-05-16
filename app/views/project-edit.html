@@ -1,0 +1,27 @@
+<div class="container">
+    <h3>Project Edit</h3>
+    <br />
+    <form role="form" name="editProjectForm">
+        <div class="alert alert-danger" role="alert" ng-show="err">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error: </span> {{err}}
+        </div>
+        <div class="form-group">
+            <label for="name">Project Name:</label>
+            <input type="text" ng-model="project.name" class="form-control" id="name" placeholder="Project Name" name="projectName" required>
+            <p style="color:red" ng-show="editProjectForm.projectName.$touched && editProjectForm.projectName.$invalid" class="help-block"> Name cannot be empty </p>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" name="" id="description" cols="30" rows="10" ng-model="project.description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" class="form-control" id="state" ng-model="project.type">
+        </div>
+        <div>Updated At: {{project.createdAt}}</div>
+        <div>Created: {{project.createdAt}}</div>
+        <button type="submit" class="btn btn-success" ng-click="saveProject(editProjectForm)">Save</button>
+        <button type="submit" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+    </form>
+</div>

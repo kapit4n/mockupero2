@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="alert alert-danger" role="alert" ng-show="err">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span> {{err}}
+    </div>
+</div>
+<button style="position: relative; left: -15px;" type="button" class="btn btn-default btn-sm" ng-click="addPermissionItem()" data-toggle="tooltip" title="Add new permission Item">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+</button>
+<br />
+<div class="row" style="background-color: white;">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Model</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="permissionItem in permissionItems">
+                <td><a href="/#!/permission-item/{{permissionItem.id}}">{{permissionItem.name}}</a></td>
+                <td>{{permissionItem.model}}</td>
+                <td>
+                    <a href="/#!/permission-item-edit/{{permissionItem.id}}" ng-click="" class="btn btn-default btn-sm" role="button">Edit</a>
+                    <button ng-click="deletePermissionItem(permissionItem.id)" class="btn btn-danger btn-sm" role="button">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

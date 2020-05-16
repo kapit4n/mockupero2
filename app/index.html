@@ -1,0 +1,151 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.cs
+s -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <script src="bower_components/socket.io-client/socket.io.js"></script>
+    <script src="bower_components/sails.io.js/dist/sails.io.js"></script>
+    <script type="text/javascript">
+    io.sails.url = 'http://localhost:1337';
+    </script>
+    <!-- endbuild -->
+</head>
+
+<body ng-app="mockuperApp">
+    <script src="static/js/html2canvas.js"></script>
+    <script src="static/js/canvas2image.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="static/js/go.js"></script>
+    <script src="static/js/sketch.min.js"></script>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <header-side> </header-side>
+    <div class="container" style="min-height: 700px;">
+        <div ng-view=""></div>
+    </div>
+    <footer-side> </footer-side>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/interact/interact.js"></script>
+    <script src="bower_components/ng-context-menu/dist/ng-context-menu.js"></script>
+    <script src="bower_components/remarkable-bootstrap-notify/bootstrap-notify.js"></script>
+    <script src="bower_components/angular-upload/angular-upload.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/services/globalservice.js"></script>
+    <script src="scripts/services/projectService.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/home.js"></script>
+    <script src="scripts/controllers/project.js"></script>
+    <script src="scripts/controllers/mockup.js"></script>
+    <script src="scripts/controllers/project-edit.js"></script>
+    <script src="scripts/controllers/project-new.js"></script>
+    <script src="scripts/controllers/mockup-new.js"></script>
+    <script src="scripts/directives/leftsidebar.js"></script>
+    <script src="scripts/directives/projectlist.js"></script>
+    <script src="scripts/services/mockupservice.js"></script>
+    <script src="scripts/directives/viewobject.js"></script>
+    <script src="scripts/directives/headerside.js"></script>
+    <script src="scripts/directives/footerside.js"></script>
+    <script src="scripts/directives/addobject.js"></script>
+    <script src="scripts/controllers/mockup-edit.js"></script>
+    <script src="scripts/controllers/mockup-edit-design.js"></script>
+    <script src="scripts/controllers/user.js"></script>
+    <script src="scripts/services/userservice.js"></script>
+    <script src="scripts/directives/tableitem.js"></script>
+    <script src="scripts/directives/imageitem.js"></script>
+    <script src="scripts/directives/menuitem.js"></script>
+    <script src="scripts/directives/buttonitem.js"></script>
+    <script src="scripts/directives/inputtextitem.js"></script>
+    <script src="scripts/directives/labelitem.js"></script>
+    <script src="scripts/directives/toolbaritemimage.js"></script>
+    <script src="scripts/directives/toolbaritembtn.js"></script>
+    <script src="scripts/directives/toolbaritemtable.js"></script>
+    <script src="scripts/directives/toolbarcontainer.js"></script>
+    <script src="scripts/services/loginservice.js"></script>
+    <script src="scripts/directives/registeruser.js"></script>
+    <script src="scripts/controllers/registeruser.js"></script>
+    <script src="scripts/controllers/userlist.js"></script>
+    <script src="scripts/directives/userlist.js"></script>
+    <script src="scripts/services/propertyservice.js"></script>
+    <script src="scripts/services/notificationservice.js"></script>
+    <script src="scripts/services/breadcrumbservice.js"></script>
+    <script src="scripts/services/headerservice.js"></script>
+    <script src="scripts/controllers/projectlist.js"></script>
+    <script src="scripts/services/chatservice.js"></script>
+    <script src="scripts/services/mockupsocketservice.js"></script>
+    <script src="scripts/directives/chatdirective.js"></script>
+    <script src="scripts/services/permissionservice.js"></script>
+    <script src="scripts/controllers/user-edit.js"></script>
+    <script src="scripts/directives/comment.js"></script>
+    <script src="scripts/services/commentservice.js"></script>
+    <script src="scripts/directives/mockupversion.js"></script>
+    <script src="scripts/services/mockupversionservice.js"></script>
+    <script src="scripts/services/workflowservice.js"></script>
+    <script src="scripts/controllers/workflow.js"></script>
+    <script src="scripts/controllers/workflowlist.js"></script>
+    <script src="scripts/controllers/workflow-new.js"></script>
+    <script src="scripts/controllers/workflow-edit.js"></script>
+    <script src="scripts/controllers/navigationdiagram.js"></script>
+    <script src="scripts/directives/shareproject.js"></script>
+    <script src="scripts/directives/viewproject.js"></script>
+    <script src="scripts/services/shareservice.js"></script>
+    <script src="scripts/directives/viewmockup.js"></script>
+    <script src="scripts/controllers/mockuppresentation.js"></script>
+    <script src="scripts/filters/cut.js"></script>
+    <script src="scripts/directives/presentation.js"></script>
+    <script src="scripts/controllers/permission-item-list.js"></script>
+    <script src="scripts/services/permissionitemservice.js"></script>
+    <script src="scripts/controllers/permission-group-list.js"></script>
+    <script src="scripts/services/permissiongroupservice.js"></script>
+    <script src="scripts/controllers/permission-group.js"></script>
+    <script src="scripts/controllers/permission-group-new.js"></script>
+    <script src="scripts/controllers/permission-group-edit.js"></script>
+    <script src="scripts/controllers/administration.js"></script>
+    <script src="scripts/directives/last-news.js"></script>
+    <script src="scripts/controllers/permission-item-edit.js"></script>
+    <script src="scripts/controllers/permission-item-new.js"></script>
+    <script src="scripts/controllers/permission-item.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>
