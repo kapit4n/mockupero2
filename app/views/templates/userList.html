@@ -14,8 +14,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>FirstName</th>
-                <th>LastName</th>
+                <th>Name</th>
                 <th>Username</th>
                 <th>Email</th>
                 <th>-----</th>
@@ -23,9 +22,8 @@
         </thead>
         <tbody>
             <tr ng-repeat="user in users">
-                <td><a href="/#!/user/{{user.id}}">{{user.firstName}}</a> </td>
-                <td>{{user.lastName}}</td>
-                <td>{{user.username}}</td>
+                <td><a href="/#!/user/{{user.id}}">{{user.name}}</a> </td>
+                <td>{{user.userName}}</td>
                 <td>{{user.email}}</td>
                 <td>
                     <a href="/#!/user-edit/{{user.id}}" ng-click="" class="btn btn-default btn-sm" role="button">Edit</a>

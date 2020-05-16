@@ -19,11 +19,10 @@ angular.module('mockuperApp')
             $scope.registerUserSave = function(registerForm) {
                 if (registerForm.$valid) {
                     userService.createUser.save({
-                        username: $scope.username,
+                        userName: $scope.userName,
                         email: $scope.email,
                         password: $scope.password,
-                        firstName: $scope.username,
-                        lastName: $scope.username
+                        name: $scope.username,
                     }, function(result) {
                         userService.publishCreate($scope, result);
                         $location.path('/userlist');

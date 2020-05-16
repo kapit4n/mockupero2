@@ -1,17 +1,13 @@
 <h3 class="col-sm-12"> User View </h3>
-<br/>
-<br/>
-<br/>
-<br/>
-<div class="col-sm-12">
+<div class="col-sm-12" style="margin: 1rem 0;">
     <div class="thumbnail" style="height: 300px;">
         <div class="caption" class="col-sm-8">
             <div class="col-sm-7" style="color: darkgray;">
                 <a href="/#!/user-edit/{{user.id}}" class="btn btn-default" role="button" ng-if="editMode">Edit Info</a>
                 <br />
                 <br />
-                <div>Name: {{user.firstName}} {{user.lastName}}</div>
-                <div>User Name: {{user.username}}</div>
+                <div>Name: {{user.name}} </div>
+                <div>UserName: {{user.userName}} </div>
                 <div>Email: {{user.email}}</div>
             </div>
             <div class="col-sm-5" style="color: darkgray;">

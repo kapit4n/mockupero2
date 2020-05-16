@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @ngdoc service
@@ -7,169 +7,236 @@
  * # mockupService
  * Service in the mockuperApp.
  */
-angular.module('mockuperApp')
-    .service('mockupService', function($resource, GlobalService, commentService) {
-        // AngularJS will instantiate a singleton by calling "new" on this function
-        var fac = {};
+angular
+  .module("mockuperApp")
+  .service("mockupService", function (
+    $resource,
+    GlobalService,
+    commentService
+  ) {
+    // AngularJS will instantiate a singleton by calling "new" on this function
+    var fac = {};
 
-        fac.mockups = [{
-            id: 0,
-            name: 'Mockup 1',
-            mockupImg: 'http://community.protoshare.com/wp-content/uploads/2010/12/example4-anim.gif',
-            description: 'abandon'
-        }, {
-            id: 1,
-            name: 'Mockup 2',
-            mockupImg: 'http://cameronbarrett.com/images/lg_ia1.gif',
-            description: 'abandon'
-        }];
+    fac.mockups = [
+      {
+        id: 0,
+        name: "Mockup 1",
+        mockupImg:
+          "http://community.protoshare.com/wp-content/uploads/2010/12/example4-anim.gif",
+        description: "abandon",
+      },
+      {
+        id: 1,
+        name: "Mockup 2",
+        mockupImg: "http://cameronbarrett.com/images/lg_ia1.gif",
+        description: "abandon",
+      },
+    ];
 
-        fac.workflows = [{
-            name: 'start',
-            functionName: '',
-            className: 'btn-primary'
-        }, {
-            name: 'close',
-            functionName: '',
-            className: 'btn-success'
-        }, {
-            name: 'abandon',
-            functionName: '',
-            className: 'btn-danger'
-        }];
+    fac.workflows = [
+      {
+        name: "start",
+        functionName: "",
+        className: "btn-primary",
+      },
+      {
+        name: "close",
+        functionName: "",
+        className: "btn-success",
+      },
+      {
+        name: "abandon",
+        functionName: "",
+        className: "btn-danger",
+      },
+    ];
 
-        fac.breadcrumb = {
-            home: [{
-                name: 'Home',
-                url: '/'
-            }],
-            project: [{
-                name: 'Home',
-                url: '/'
-            }, {
-                name: 'Project',
-                url: '/project'
-            }],
-            mockup: [{
-                name: 'Home',
-                url: '/'
-            }, {
-                name: 'Project',
-                url: '/project'
-            }, {
-                name: 'Mockup',
-                url: '/mockup'
-            }]
-        };
+    fac.breadcrumb = {
+      home: [
+        {
+          name: "Home",
+          url: "/",
+        },
+      ],
+      project: [
+        {
+          name: "Home",
+          url: "/",
+        },
+        {
+          name: "Project",
+          url: "/project",
+        },
+      ],
+      mockup: [
+        {
+          name: "Home",
+          url: "/",
+        },
+        {
+          name: "Project",
+          url: "/project",
+        },
+        {
+          name: "Mockup",
+          url: "/mockup",
+        },
+      ],
+    };
 
-        fac.projects = ['John', 'James', 'Jake'];
+    fac.projects = ["John", "James", "Jake"];
 
-        fac.mockupById = $resource(GlobalService.BASE_PATH + '/mockups/:mockupId', {
-            mockupId: '@id'
-        }, {
-            get: {
-                method: 'GET'
-            }
-        });
+    fac.mockupById = $resource(
+      GlobalService.BASE_PATH + "/mockups/:mockupId",
+      {
+        mockupId: "@id",
+      },
+      {
+        get: {
+          method: "GET",
+        },
+      }
+    );
 
+    fac.getMockups = $resource(
+      GlobalService.BASE_PATH + "/mockups",
+      {},
+      {
+        get: {
+          method: "GET",
+          isArray: true,
+        },
+      }
+    );
 
-        fac.getMockups = $resource(GlobalService.BASE_PATH + '/mockups', {}, {
-            get: {
-                method: 'GET',
-                isArray: true
-            }
-        });
+    fac.createMockup = $resource(
+      GlobalService.BASE_PATH + "/mockups",
+      {},
+      {
+        save: {
+          method: "POST",
+        },
+      }
+    );
 
-        fac.createMockup = $resource(GlobalService.BASE_PATH + '/mockups/', {}, {
-            save: {
-                method: 'POST'
-            }
-        });
+    fac.createMockupItem = $resource(
+      GlobalService.BASE_PATH + "/mockupItems/",
+      {},
+      {
+        save: {
+          method: "POST",
+        },
+      }
+    );
 
-        fac.createMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItems/', {}, {
-            save: {
-                method: 'POST'
-            }
-        });
+    fac.deleteMockup = $resource(
+      GlobalService.BASE_PATH + "/mockups/:id",
+      {},
+      {
+        get: {
+          method: "DELETE",
+        },
+      }
+    );
 
-        fac.deleteMockup = $resource(GlobalService.BASE_PATH + '/mockups/:id', {}, {
-            get: {
-                method: 'DELETE'
-            }
-        });
+    fac.deleteMockupItem = $resource(
+      GlobalService.BASE_PATH + "/mockupItems/:id",
+      {},
+      {
+        deleteIt: {
+          method: "DELETE",
+        },
+      }
+    );
 
-        fac.deleteMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItems/:id', {}, {
-            deleteIt: {
-                method: 'DELETE'
-            }
-        });
+    fac.createMockupItemUploadAvatar = $resource(
+      GlobalService.BASE_PATH + "/mockupItem/uploadAvatar",
+      {},
+      {
+        save: {
+          method: "POST",
+        },
+      }
+    );
 
-        fac.createMockupItemUploadAvatar = $resource(GlobalService.BASE_PATH + '/mockupItem/uploadAvatar', {}, {
-            save: {
-                method: 'POST'
-            }
-        });
+    fac.updateMockupItem = $resource(
+      GlobalService.BASE_PATH + "/mockupItems/:id",
+      {},
+      {
+        save: {
+          method: "PUT",
+        },
+      }
+    );
 
-        fac.updateMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItems/:id', {}, {
-            save: {
-                method: 'PUT'
-            }
-        });
+    fac.updateMockup = $resource(
+      GlobalService.BASE_PATH + "/mockups/:id",
+      {},
+      {
+        update: {
+          method: "PUT",
+        },
+      }
+    );
 
-        fac.updateMockup = $resource(GlobalService.BASE_PATH + '/mockups/:id', {}, {
-            update: {
-                method: 'PUT'
-            }
-        });
+    fac.getMockupItems = $resource(
+      GlobalService.BASE_PATH + "/mockupItems",
+      {},
+      {
+        get: {
+          method: "GET",
+          isArray: true,
+        },
+      }
+    );
 
-        fac.getMockupItems = $resource(GlobalService.BASE_PATH + '/mockupItems', {}, {
-            get: {
-                method: 'GET',
-                isArray: true
-            }
-        });
+    fac.saveAllMockupItems = $resource(
+      GlobalService.BASE_PATH + "/mockupItems/saveAll",
+      {},
+      {
+        save: {
+          method: "POST",
+        },
+      }
+    );
 
-        fac.saveAllMockupItems = $resource(GlobalService.BASE_PATH + '/mockupItems/saveAll', {}, {
-            save: {
-                method: 'POST'
-            }
-        });
+    fac.publishCreate = function ($scope, mockup) {
+      $scope.newComment = "Mockup " + mockup.name + " has been Created";
+      $scope.relationName = mockup.name;
+      $scope.relationId = mockup.id;
+      $scope.relationType = "mockup";
+      commentService.share($scope);
+    };
 
-        fac.publishCreate = function($scope, mockup) {
-            $scope.newComment = "Mockup " + mockup.name + " has been Created";
-            $scope.relationName = mockup.name;
-            $scope.relationId = mockup.id;
-            $scope.relationType = 'mockup';
-            commentService.share($scope);
-        };
+    fac.publishUpdate = function ($scope, mockup) {
+      $scope.newComment = "Mockup " + mockup.name + " has been Updated";
+      $scope.relationName = mockup.name;
+      $scope.relationId = mockup.id;
+      $scope.relationType = "mockup";
+      commentService.share($scope);
+    };
 
-        fac.publishUpdate = function($scope, mockup) {
-            $scope.newComment = "Mockup " + mockup.name + " has been Updated";
-            $scope.relationName = mockup.name;
-            $scope.relationId = mockup.id;
-            $scope.relationType = 'mockup';
-            commentService.share($scope);
-        };
+    fac.publishSuggestUpdate = function ($scope, mockup) {
+      $scope.newComment =
+        "Mockup suggest has been Updated for mockup (" + mockup.name + ")";
+      $scope.isMockupSuggest = true;
+      $scope.relationName = mockup.name;
+      $scope.relationId = mockup.mockupParent;
+      $scope.relationType = "mockup";
+      $scope.mockupSuggestId = mockup.id;
+      commentService.share($scope);
+    };
 
-        fac.publishSuggestUpdate = function($scope, mockup) {
-            $scope.newComment = "Mockup suggest has been Updated for mockup (" + mockup.name + ")";
-            $scope.isMockupSuggest = true;
-            $scope.relationName = mockup.name;
-            $scope.relationId = mockup.mockupParent;
-            $scope.relationType = 'mockup';
-            $scope.mockupSuggestId = mockup.id;
-            commentService.share($scope);
-        };
+    fac.publishSuggestCreate = function ($scope, mockup) {
+      $scope.newComment =
+        "Mockup suggest has been created for mockup (" + mockup.name + ")";
+      $scope.isMockupSuggest = true;
+      $scope.relationName = mockup.name;
+      $scope.relationId = mockup.mockupParent;
+      $scope.relationType = "mockup";
+      $scope.mockupSuggestId = mockup.id;
+      commentService.share($scope);
+    };
 
-        fac.publishSuggestCreate = function($scope, mockup) {
-            $scope.newComment = "Mockup suggest has been created for mockup (" + mockup.name + ")";
-            $scope.isMockupSuggest = true;
-            $scope.relationName = mockup.name;
-            $scope.relationId = mockup.mockupParent;
-            $scope.relationType = 'mockup';
-            $scope.mockupSuggestId = mockup.id;
-            commentService.share($scope);
-        };
-
-        return fac;
-    });
+    return fac;
+  });
