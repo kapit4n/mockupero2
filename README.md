@@ -11,6 +11,11 @@ https://github.com/kapit4n/mockupero-ui/wiki
 ### Project View
 <img src="https://github.com/kapit4n/mockupero-ui/raw/develop/mockups/mockupero_project_view.png" alt="Drawing" width="80%"/>
 
+## navigate
+- /project/1
+- /mockup/1
+
+
 ## Prerequisites
 * node 6
 * npm 3.10.6

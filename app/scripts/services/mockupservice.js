@@ -64,7 +64,7 @@ angular.module('mockuperApp')
 
         fac.projects = ['John', 'James', 'Jake'];
 
-        fac.mockupById = $resource(GlobalService.BASE_PATH + '/mockup/:mockupId', {
+        fac.mockupById = $resource(GlobalService.BASE_PATH + '/mockups/:mockupId', {
             mockupId: '@id'
         }, {
             get: {
@@ -73,32 +73,32 @@ angular.module('mockuperApp')
         });
 
 
-        fac.getMockups = $resource(GlobalService.BASE_PATH + '/mockup', {}, {
+        fac.getMockups = $resource(GlobalService.BASE_PATH + '/mockups', {}, {
             get: {
                 method: 'GET',
                 isArray: true
             }
         });
 
-        fac.createMockup = $resource(GlobalService.BASE_PATH + '/mockup/', {}, {
+        fac.createMockup = $resource(GlobalService.BASE_PATH + '/mockups/', {}, {
             save: {
                 method: 'POST'
             }
         });
 
-        fac.createMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItem/', {}, {
+        fac.createMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItems/', {}, {
             save: {
                 method: 'POST'
             }
         });
 
-        fac.deleteMockup = $resource(GlobalService.BASE_PATH + '/mockup/:id', {}, {
+        fac.deleteMockup = $resource(GlobalService.BASE_PATH + '/mockups/:id', {}, {
             get: {
                 method: 'DELETE'
             }
         });
 
-        fac.deleteMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItem/:id', {}, {
+        fac.deleteMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItems/:id', {}, {
             deleteIt: {
                 method: 'DELETE'
             }
@@ -110,26 +110,26 @@ angular.module('mockuperApp')
             }
         });
 
-        fac.updateMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItem/:id', {}, {
+        fac.updateMockupItem = $resource(GlobalService.BASE_PATH + '/mockupItems/:id', {}, {
             save: {
                 method: 'PUT'
             }
         });
 
-        fac.updateMockup = $resource(GlobalService.BASE_PATH + '/mockup/:id', {}, {
+        fac.updateMockup = $resource(GlobalService.BASE_PATH + '/mockups/:id', {}, {
             update: {
                 method: 'PUT'
             }
         });
 
-        fac.getMockupItems = $resource(GlobalService.BASE_PATH + '/mockupItem', {}, {
+        fac.getMockupItems = $resource(GlobalService.BASE_PATH + '/mockupItems', {}, {
             get: {
                 method: 'GET',
                 isArray: true
             }
         });
 
-        fac.saveAllMockupItems = $resource(GlobalService.BASE_PATH + '/mockupItem/saveAll', {}, {
+        fac.saveAllMockupItems = $resource(GlobalService.BASE_PATH + '/mockupItems/saveAll', {}, {
             save: {
                 method: 'POST'
             }
