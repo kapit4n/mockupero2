@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @ngdoc service
@@ -7,12 +7,19 @@
  * # permissionService
  * Service in the mockuperApp.
  */
-angular.module('mockuperApp')
-    .service('permissionService', function($rootScope, userService, GlobalService) {
-        // AngularJS will instantiate a singleton by calling "new" on this function
-        var fac = {};
-        fac.loadPermission = function(scope, projectId, userId) {
-            try {
+angular
+  .module("mockuperApp")
+  .service("permissionService", function (
+    $rootScope,
+    userService,
+    GlobalService
+  ) {
+    // AngularJS will instantiate a singleton by calling "new" on this function
+    var fac = {};
+    fac.loadPermission = function (scope, projectId, userId) {
+      scope.itemStyle = "resize-drag";
+      scope.editMode = true;
+      /* try {
                 userService.projectPermission.get({
                     projectId: projectId,
                     userId: userId
@@ -22,7 +29,7 @@ angular.module('mockuperApp')
                         scope.editMode = true;
                     } catch (e1) { console.error(e1); }
                 });
-            } catch (e) { console.error(e); }
-        };
-        return fac;
-    });
+            } catch (e) { console.error(e); } */
+    };
+    return fac;
+  });

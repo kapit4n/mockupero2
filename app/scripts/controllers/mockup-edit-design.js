@@ -31,11 +31,11 @@ angular.module('mockuperApp')
             $scope.loadMockupItems = function() {
                 var mockupId = $scope.editObject.id;
                 mockupService.getMockupItems.get({
-                    sort: 'position ',
+                    /* sort: 'position ',
                     where: {
                         mockupId: mockupId
                     },
-                    limit: 100
+                    limit: 100 */
                 }).$promise.then(function(result) {
                     $scope.mockupItems = result;
                     $scope.mockupItems.forEach(function(item) {
@@ -572,10 +572,10 @@ angular.module('mockuperApp')
 
             $scope.reloadMockupVersions = function() {
                 mockupVersionService.getMockupVersions.get({
-                    where: {
+                    /* where: {
                         mockup: $routeParams.mockupId
                     },
-                    sort: 'createdAt DESC'
+                    sort: 'createdAt DESC' */
                 }).$promise.then(function(result) {
                     $scope.versionMockups = result;
                     try {

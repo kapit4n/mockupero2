@@ -13,14 +13,14 @@ angular.module('mockuperApp')
             // AngularJS will instantiate a singleton by calling "new" on this function
             var fac = {};
 
-            fac.getMockupVersions = $resource(GlobalService.BASE_PATH + '/mockupVersion', {}, {
+            fac.getMockupVersions = $resource(GlobalService.BASE_PATH + '/mockupVersions', {}, {
                 get: {
                     method: 'GET',
                     isArray: true
                 }
             });
 
-            fac.versionMockupById = $resource(GlobalService.BASE_PATH + '/mockupVersion/:id', {
+            fac.versionMockupById = $resource(GlobalService.BASE_PATH + '/mockupVersions/:id', {
                 id: '@id'
             }, {
                 get: {
@@ -28,19 +28,19 @@ angular.module('mockuperApp')
                 }
             });
 
-            fac.createMockupVersion = $resource(GlobalService.BASE_PATH + '/mockupVersion/', {}, {
+            fac.createMockupVersion = $resource(GlobalService.BASE_PATH + '/mockupVersions/', {}, {
                 save: {
                     method: 'POST'
                 }
             });
 
-            fac.updateMockupVersion = $resource(GlobalService.BASE_PATH + '/mockupVersion/:id', {}, {
+            fac.updateMockupVersion = $resource(GlobalService.BASE_PATH + '/mockupVersions/:id', {}, {
                 update: {
                     method: 'PUT'
                 }
             });
 
-            fac.deleteMockupVersion = $resource(GlobalService.BASE_PATH + '/mockupVersion/:id', {}, {
+            fac.deleteMockupVersion = $resource(GlobalService.BASE_PATH + '/mockupVersions/:id', {}, {
                 delete: {
                     method: 'DELETE'
                 }
