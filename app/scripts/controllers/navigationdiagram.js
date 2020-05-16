@@ -8,9 +8,9 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('NavigationdiagramCtrl', ['$scope', '$rootScope', '$cookieStore', 'mockupService', 'loginService', 'projectService', '$routeParams', '$location', '$rootScope', 'breadcrumbService',
+    .controller('NavigationdiagramCtrl', ['$scope', '$rootScope', '$cookies', 'mockupService', 'loginService', 'projectService', '$routeParams', '$location', '$rootScope', 'breadcrumbService',
         'headerService', 'permissionService', 'workflowService', 'GlobalService',
-        function($scope, $rootStore, $cookieStore, mockupService, loginService, projectService, $routeParams, $location, $rootScope, breadcrumbService,
+        function($scope, $rootStore, $cookies, mockupService, loginService, projectService, $routeParams, $location, $rootScope, breadcrumbService,
             headerService, permissionService, workflowService, GlobalService) {
             headerService.updateHeader('projects');
             loginService.reloadScope();
@@ -59,7 +59,7 @@ angular.module('mockuperApp')
                         }
                         myDiagram.model = new go.GraphLinksModel(nodeDataArrayAux, linkDataArray);
                         try {
-                            permissionService.loadPermission($scope, result.id, $cookieStore.get('userId'));
+                            permissionService.loadPermission($scope, result.id, $cookies.get('userId'));
                             $rootScope.breadcrumb = breadcrumbService.updateBreadcrumb('project', $scope.project);
                             //$rootScope.$digest();
                         } catch (e) { console.log(e); }

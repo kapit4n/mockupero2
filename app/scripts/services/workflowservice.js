@@ -10,26 +10,26 @@
 angular.module('mockuperApp')
     .service('workflowService', function($resource, GlobalService) {
         var fac = {};
-        fac.workflow = $resource(GlobalService.BASE_PATH + '/workflow', {}, {
+        fac.workflow = $resource(GlobalService.BASE_PATH + '/workflows', {}, {
             get: {
                 method: 'GET',
                 isArray: true
             }
         });
 
-        fac.createWorkflow = $resource(GlobalService.BASE_PATH + '/workflow/', {}, {
+        fac.createWorkflow = $resource(GlobalService.BASE_PATH + '/workflows/', {}, {
             save: {
                 method: 'POST'
             }
         });
 
-        fac.updateWorkflow = $resource(GlobalService.BASE_PATH + '/workflow/:id', {}, {
+        fac.updateWorkflow = $resource(GlobalService.BASE_PATH + '/workflows/:id', {}, {
             save: {
                 method: 'PUT'
             }
         });
 
-        fac.workflowById = $resource(GlobalService.BASE_PATH + '/workflow/:workflowId', {
+        fac.workflowById = $resource(GlobalService.BASE_PATH + '/workflows/:id', {
             workflowId: '@id'
         }, {
             get: {
@@ -37,7 +37,7 @@ angular.module('mockuperApp')
             }
         });
 
-        fac.deleteWorkflow = $resource(GlobalService.BASE_PATH + '/workflow/:id', {}, {
+        fac.deleteWorkflow = $resource(GlobalService.BASE_PATH + '/workflows/:id', {}, {
             delete: {
                 method: 'DELETE'
             }

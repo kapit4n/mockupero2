@@ -8,9 +8,9 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('MockuppresentationCtrl', ['$scope', '$cookieStore', 'loginService', 'mockupService', 'breadcrumbService',
+    .controller('MockuppresentationCtrl', ['$scope', '$cookies', 'loginService', 'mockupService', 'breadcrumbService',
         '$routeParams', '$rootScope', 'headerService', 'permissionService', 'GlobalService',
-        function($scope, $cookieStore, loginService, mockupService, breadcrumbService,
+        function($scope, $cookies, loginService, mockupService, breadcrumbService,
             $routeParams, $rootScope, headerService, permissionService, GlobalService) {
             $scope.mockupId = $routeParams.mockupId;
             $scope.globalService = GlobalService;
@@ -23,7 +23,7 @@ angular.module('mockuperApp')
                 .$promise.then(function(result) {
                     $scope.mockup = result;
                     try {
-                        permissionService.loadPermission($scope, result.project.id, $cookieStore.get('userId'));
+                        permissionService.loadPermission($scope, result.project.id, $cookies.get('userId'));
                         $rootScope.breadcrumb = breadcrumbService.updateBreadcrumb('mockup', $scope.mockup);
                     } catch (e) { console.error(e); }
                 }, function(error) {

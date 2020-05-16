@@ -8,10 +8,10 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('PermissionItemEditCtrl', ['$scope', '$routeParams', '$rootScope', '$location', '$cookieStore',
+    .controller('PermissionItemEditCtrl', ['$scope', '$routeParams', '$rootScope', '$location', '$cookies',
         'permissionItemService',
         'loginService', 'headerService', 'breadcrumbService', 'permissionService',
-        function($scope, $routeParams, $rootScope, $location, $cookieStore, permissionItemService, loginService,
+        function($scope, $routeParams, $rootScope, $location, $cookies, permissionItemService, loginService,
             headerService, breadcrumbService, permissionService) {
             loginService.reloadScope();
             headerService.updateHeader('permissionItem');

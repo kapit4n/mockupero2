@@ -8,9 +8,9 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('WorkflowNewCtrl', ['$scope', '$window', '$cookieStore',
+    .controller('WorkflowNewCtrl', ['$scope', '$window', '$cookies',
         'workflowService', 'breadcrumbService', 'headerService',
-        function($scope, $window, $cookieStore, workflowService,
+        function($scope, $window, $cookies, workflowService,
             breadcrumbService, headerService) {
 
             headerService.updateHeader('administration');

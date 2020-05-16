@@ -7,14 +7,14 @@
  * # chatDirective
  */
 angular.module('mockuperApp')
-    .directive('chatDirective', ['GlobalService', 'chatService', '$routeParams',
-        function(GlobalService, chatService, $routeParams) {
+    .directive('chatDirective', [/* 'GlobalService', 'chatService', '$routeParams', */
+        function(/* GlobalService, chatService, $routeParams */) {
             return {
                 templateUrl: 'views/templates/chatDirective.html',
                 restrict: 'E',
                 scope: false,
                 link: function postLink(scope, element, attrs) {
-                    scope.globalService = GlobalService;
+                    /* scope.globalService = GlobalService;
                     scope.chatList = [];
                     scope.chatMessage = '';
                     scope.chatRoom = $routeParams.mockupId ? $routeParams.mockupId : 'General';
@@ -34,7 +34,7 @@ angular.module('mockuperApp')
                         chatService.sendMsg(scope);
                     }
 
-                    chatService.subscribe(scope);
+                    chatService.subscribe(scope); */
                 }
             };
         }

@@ -8,8 +8,8 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('MockupNewCtrl', ['$rootScope', '$scope', '$cookieStore', '$window', '$location', '$routeParams', 'mockupService', 'projectService', 'commentService', 'breadcrumbService', 'headerService',
-        function($rootScope, $scope, $cookieStore, $window, $location, $routeParams, mockupService, projectService, commentService, breadcrumbService, headerService) {
+    .controller('MockupNewCtrl', ['$rootScope', '$scope', '$cookies', '$window', '$location', '$routeParams', 'mockupService', 'projectService', 'commentService', 'breadcrumbService', 'headerService',
+        function($rootScope, $scope, $cookies, $window, $location, $routeParams, mockupService, projectService, commentService, breadcrumbService, headerService) {
             headerService.updateHeader('projects');
             $scope.name = '';
             $scope.objType = 'Mockup';
@@ -21,7 +21,7 @@ angular.module('mockuperApp')
 
             $scope.save = function(addObjectForm) {
                 if (addObjectForm.$valid) {
-                    $scope.newMockup.owner = $cookieStore.get('userId');
+                    $scope.newMockup.owner = $cookies.get('userId');
                     $scope.newMockup.project = $scope.project;
                     mockupService.createMockup.save($scope.newMockup, function(result) {
                         mockupService.publishCreate($scope, result);

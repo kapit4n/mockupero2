@@ -8,9 +8,9 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('PermissionItemCtrl', ['$scope', '$routeParams', '$rootScope', '$cookieStore', 'permissionItemService',
+    .controller('PermissionItemCtrl', ['$scope', '$routeParams', '$rootScope', '$cookies', 'permissionItemService',
         'loginService', 'headerService', 'breadcrumbService', 'permissionService',
-        function($scope, $routeParams, $rootScope, $cookieStore, permissionItemService, loginService,
+        function($scope, $routeParams, $rootScope, $cookies, permissionItemService, loginService,
             headerService, breadcrumbService, permissionService) {
             loginService.reloadScope();
             headerService.updateHeader('permissionItem');
@@ -24,7 +24,7 @@ angular.module('mockuperApp')
                 .$promise.then(function(result) {
                     $scope.permissionItem = result;
                     try {
-                        permissionService.loadPermission($scope, result.id, $cookieStore.get('userId'));
+                        permissionService.loadPermission($scope, result.id, $cookies.get('userId'));
                         $rootScope.breadcrumb = breadcrumbService.updateBreadcrumb('permission-item', $scope.permissionItem);
                     } catch (e) {
                         $scope.err = error;

@@ -8,9 +8,9 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('PermissionGroupNewCtrl', ['$scope', '$window', '$location', '$cookieStore',
+    .controller('PermissionGroupNewCtrl', ['$scope', '$window', '$location', '$cookies',
         'permissionGroupService', 'breadcrumbService', 'headerService',
-        function($scope, $window, $location, $cookieStore, permissionGroupService,
+        function($scope, $window, $location, $cookies, permissionGroupService,
             breadcrumbService, headerService) {
 
             headerService.updateHeader('permission-group');

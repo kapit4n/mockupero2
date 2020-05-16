@@ -8,12 +8,12 @@
  * Service in the mockuperApp.
  */
 angular.module('mockuperApp')
-    .service('mockupSocketService', function($cookieStore, $routeParams, $compile, $timeout, GlobalService) {
+    .service('mockupSocketService', function($cookies, $routeParams, $compile, $timeout, GlobalService) {
         var fac = {};
         fac.subscribeToMockupEdit = function($scope) {
 
             io.socket.post('/mockupEditor/editors', {
-                username: $cookieStore.get('username')
+                username: $cookies.get('username')
             }, function serverResponded(body, JWR) {
                 //console.log('Mockup editor post');
             });
@@ -35,7 +35,7 @@ angular.module('mockuperApp')
 
                 // move this code to socket services related to mockups
                 io.socket.get('/mockupeditor/getEditors', {
-                    username: $cookieStore.get('username'),
+                    username: $cookies.get('username'),
                     roomName: $routeParams.mockupId
                 }, function serverResponded(body, JWR) {
                     //console.log('get Editors');
@@ -58,7 +58,7 @@ angular.module('mockuperApp')
             }, 500);
 
             io.socket.get('/mockupVersion', {
-                username: $cookieStore.get('username')
+                username: $cookies.get('username')
             }, function serverResponded(body, JWR) {
                 //console.log('Subscribe to mockup version');
             });

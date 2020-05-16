@@ -8,10 +8,10 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('MainCtrl', ['$scope', '$cookieStore', 'mockupService', 'projectService', 'loginService',
+    .controller('MainCtrl', ['$scope', '$cookies', 'mockupService', 'projectService', 'loginService',
         'userService', '$location', '$rootScope', '$window', '$http', '$timeout', 'headerService',
         'chatService', 'GlobalService', 'shareService',
-        function($scope, $cookieStore, mockupService, projectService, loginService, userService,
+        function($scope, $cookies, mockupService, projectService, loginService, userService,
             $location, $rootScope, $window, $http, $timeout, headerService, chatService, GlobalService, shareService) {
             $scope.globalService = GlobalService;
             $scope.logingLog = {};
@@ -90,7 +90,7 @@ angular.module('mockuperApp')
 
             $scope.reloadProject = function(currentPage) {
                 $scope.currentPage = currentPage;
-                projectService.reloadProject($scope, $cookieStore);
+                projectService.reloadProject($scope, $cookies);
             };
 
             $scope.deleteProject = function(projectId) {

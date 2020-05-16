@@ -7,8 +7,8 @@
  * # Comment
  */
 angular.module('mockuperApp')
-    .directive('comment', ['$cookieStore', 'commentService', 'GlobalService',
-        function($cookieStore, commentService, GlobalService) {
+    .directive('comment', ['$cookies', 'commentService', 'GlobalService',
+        function($cookies, commentService, GlobalService) {
             return {
                 templateUrl: 'views/templates/comment.html',
                 restrict: 'E',

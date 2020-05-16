@@ -21,7 +21,7 @@ angular
         'ng-context-menu'
     ])
     .config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
-        $httpProvider.defaults.withCredentials = true;
+        //$httpProvider.defaults.withCredentials = false;
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',

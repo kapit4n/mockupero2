@@ -7,8 +7,8 @@
  * # mockupVersion
  */
 angular.module('mockuperApp')
-    .directive('mockupVersion', ['$cookieStore', '$timeout', 'mockupVersionService', '$routeParams', 'GlobalService',
-        function($cookieStore, $timeout, mockupVersionService, $routeParams, GlobalService) {
+    .directive('mockupVersion', ['$cookies', '$timeout', 'mockupVersionService', '$routeParams', 'GlobalService',
+        function($cookies, $timeout, mockupVersionService, $routeParams, GlobalService) {
             return {
                 templateUrl: 'views/templates/mockupVersion.html',
                 restrict: 'E',

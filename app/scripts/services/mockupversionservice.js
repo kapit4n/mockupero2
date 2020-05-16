@@ -8,8 +8,8 @@
  * Service in the mockuperApp.
  */
 angular.module('mockuperApp')
-    .service('mockupVersionService', ['$resource', '$cookieStore', '$routeParams', 'GlobalService',
-        function($resource, $cookieStore, $routeParams, GlobalService) {
+    .service('mockupVersionService', ['$resource', '$cookies', '$routeParams', 'GlobalService',
+        function($resource, $cookies, $routeParams, GlobalService) {
             // AngularJS will instantiate a singleton by calling "new" on this function
             var fac = {};
 

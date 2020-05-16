@@ -8,10 +8,10 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('ProjectlistCtrl', ['$scope', '$cookieStore', 'mockupService', 'projectService',
+    .controller('ProjectlistCtrl', ['$scope', '$cookies', 'mockupService', 'projectService',
         'loginService', 'userService', '$location', '$rootScope', '$window', '$http', '$timeout',
         'breadcrumbService', 'headerService', 'shareService', 'GlobalService',
-        function($scope, $cookieStore, mockupService, projectService, loginService, userService,
+        function($scope, $cookies, mockupService, projectService, loginService, userService,
             $location, $rootScope, $window, $http, $timeout, breadcrumbService, headerService, shareService, GlobalService) {
             $scope.logingLog = {};
             $scope.chatList = [];
@@ -87,7 +87,7 @@ angular.module('mockuperApp')
 
             $scope.reloadProject = function(currentPage) {
                 $scope.currentPage = currentPage;
-                projectService.reloadProject($scope, $cookieStore);
+                projectService.reloadProject($scope, $cookies);
             };
 
             $scope.deleteProject = function(projectId) {

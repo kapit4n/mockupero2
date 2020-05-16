@@ -8,9 +8,9 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('MockupCtrl', ['$scope', '$cookieStore', 'loginService', 'mockupService', 'breadcrumbService',
+    .controller('MockupCtrl', ['$scope', '$cookies', 'loginService', 'mockupService', 'breadcrumbService',
         '$routeParams', '$rootScope', 'headerService', 'permissionService', 'workflowService', 'GlobalService',
-        function($scope, $cookieStore, loginService, mockupService, breadcrumbService,
+        function($scope, $cookies, loginService, mockupService, breadcrumbService,
             $routeParams, $rootScope, headerService, permissionService, workflowService, GlobalService) {
             loginService.reloadScope();
             headerService.updateHeader('projects');
@@ -92,7 +92,7 @@ angular.module('mockuperApp')
                     .$promise.then(function(result) {
                         mockupService.getMockups.get({
                                 mockupParent: $routeParams.mockupId,
-                                owner: $cookieStore.get('userId')
+                                owner: $cookies.get('userId')
                             })
                             .$promise.then(function(suggest) {
                                 if (suggest.length > 0) {
@@ -112,7 +112,7 @@ angular.module('mockuperApp')
                         $scope.viewObject.parentUrl = '#/project/' + result.project.id;
                         $scope.loadWorkflow();
                         try {
-                            permissionService.loadPermission($scope, result.project.id, $cookieStore.get('userId'));
+                            permissionService.loadPermission($scope, result.project.id, $cookies.get('userId'));
                             $rootScope.breadcrumb = breadcrumbService.updateBreadcrumb('mockup', $scope.mockup);
                         } catch (e) { console.error(e); }
                     }, function(error) {

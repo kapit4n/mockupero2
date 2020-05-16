@@ -9,10 +9,10 @@
  */
 angular.module('mockuperApp')
     .controller('MockupEditDesignCtrl', ['$scope', '$rootScope', 'loginService', '$compile', '$window', '$routeParams', 'mockupService',
-        '$timeout', '$http', '$cookieStore', 'propertyService', 'notificationService', 'breadcrumbService', 'headerService',
+        '$timeout', '$http', '$cookies', 'propertyService', 'notificationService', 'breadcrumbService', 'headerService',
         'mockupSocketService', 'userService', 'permissionService', 'mockupVersionService', 'GlobalService', 'workflowService', 'commentService',
         function($scope, $rootScope, loginService, $compile, $window, $routeParams, mockupService,
-            $timeout, $http, $cookieStore, propertyService, notificationService, breadcrumbService, headerService,
+            $timeout, $http, $cookies, propertyService, notificationService, breadcrumbService, headerService,
             mockupSocketService, userService, permissionService, mockupVersionService, GlobalService, workflowService, commentService) {
             loginService.reloadScope();
             headerService.updateHeader('projects');
@@ -67,7 +67,7 @@ angular.module('mockuperApp')
                         $scope.editObject = result;
                         $scope.mockupSuggest = $scope.editObject;
                         $scope.mockupSuggest.mockupParent = $scope.editObject.id;
-                        $scope.mockupSuggest.owner = $cookieStore.get('userId');
+                        $scope.mockupSuggest.owner = $cookies.get('userId');
                         $scope.mockupSuggest.isSuggest = true;
                         delete $scope.mockupSuggest.id;
                         mockupService.createMockup.save($scope.mockupSuggest, function(resultSaved) {
@@ -107,7 +107,7 @@ angular.module('mockuperApp')
                     $scope.editObject = result;
                     $scope.loadWorkflow();
                     try {
-                        permissionService.loadPermission($scope, result.project.id, $cookieStore.get('userId'));
+                        permissionService.loadPermission($scope, result.project.id, $cookies.get('userId'));
                         $rootScope.breadcrumb = breadcrumbService.updateBreadcrumb('mockup', $scope.editObject);
                     } catch (e) { console.log(e); }
                     $scope.loadMockupItems();
@@ -258,7 +258,7 @@ angular.module('mockuperApp')
                                         io.socket.post('/mockupVersion/saveIt', {
                                             number: 'version 1',
                                             mockup: $scope.editObject.id,
-                                            user: $cookieStore.get('userId'),
+                                            user: $cookies.get('userId'),
                                             action: 'update',
                                             message: 'Update the Mockup'
                                         }, function serverResponded(body, JWR) {
@@ -308,7 +308,7 @@ angular.module('mockuperApp')
 
             $scope.cancel = function() {
                 io.socket.post('/mockupEditor/logout', {
-                    username: $cookieStore.get('username')
+                    username: $cookies.get('username')
                 }, function serverResponded(body, JWR) {
                     ////console.log('Mockup editor out');
                 });
@@ -523,7 +523,7 @@ angular.module('mockuperApp')
                     io.socket.post('/mockupVersion/saveIt', {
                         number: 'version 1',
                         mockup: $scope.editObject.id,
-                        username: $cookieStore.get('username'),
+                        username: $cookies.get('username'),
                         action: 'delete_item',
                         message: 'Update the Mockup'
                     }, function serverResponded(body, JWR) {

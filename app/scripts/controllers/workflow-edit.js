@@ -8,10 +8,10 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('WorkflowEditCtrl', ['$scope', '$routeParams', '$rootScope', '$window', '$cookieStore',
+    .controller('WorkflowEditCtrl', ['$scope', '$routeParams', '$rootScope', '$window', '$cookies',
         'workflowService',
         'loginService', 'headerService', 'breadcrumbService', 'permissionService',
-        function($scope, $routeParams, $rootScope, $window, $cookieStore, workflowService, loginService,
+        function($scope, $routeParams, $rootScope, $window, $cookies, workflowService, loginService,
             headerService, breadcrumbService, permissionService) {
             loginService.reloadScope();
             headerService.updateHeader('administration');
@@ -22,12 +22,12 @@ angular.module('mockuperApp')
 
             $scope.workflow = null;
             workflowService.workflowById.get({
-                    workflowId: $routeParams.workflowId
+                    id: $routeParams.workflowId
                 })
                 .$promise.then(function(result) {
                     $scope.workflow = result;
                     try {
-                        permissionService.loadPermission($scope, result.id, $cookieStore.get('userId'));
+                        permissionService.loadPermission($scope, result.id, $cookies.get('userId'));
                         $rootScope.breadcrumb = breadcrumbService.updateBreadcrumb('workflow', $scope.workflow);
                     } catch (e) { console.log(e); }
                 });

@@ -8,9 +8,9 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('PermissionItemNewCtrl', ['$scope', '$window', '$location', '$cookieStore',
+    .controller('PermissionItemNewCtrl', ['$scope', '$window', '$location', '$cookies',
         'permissionItemService', 'breadcrumbService', 'headerService',
-        function($scope, $window, $location, $cookieStore, permissionItemService,
+        function($scope, $window, $location, $cookies, permissionItemService,
             breadcrumbService, headerService) {
 
             headerService.updateHeader('permission-item');

@@ -8,9 +8,9 @@
  * Controller of the mockuperApp
  */
 angular.module('mockuperApp')
-    .controller('ProjectCtrl', ['$scope', '$rootScope', '$cookieStore', 'mockupService', 'loginService', 'projectService', '$routeParams', '$location', '$rootScope', 'breadcrumbService',
+    .controller('ProjectCtrl', ['$scope', '$rootScope', '$cookies', 'mockupService', 'loginService', 'projectService', '$routeParams', '$location', '$rootScope', 'breadcrumbService',
         'headerService', 'permissionService', 'workflowService', 'commentService', 'GlobalService',
-        function($scope, $rootStore, $cookieStore, mockupService, loginService, projectService, $routeParams, $location, $rootScope, breadcrumbService,
+        function($scope, $rootStore, $cookies, mockupService, loginService, projectService, $routeParams, $location, $rootScope, breadcrumbService,
             headerService, permissionService, workflowService, commentService, GlobalService) {
             headerService.updateHeader('projects');
             loginService.reloadScope();
@@ -52,16 +52,16 @@ angular.module('mockuperApp')
                     $scope.viewObject.editUrl = 'project/edit/' + result.id;
                     $scope.loadWorkflow();
                     try {
-                        permissionService.loadPermission($scope, result.id, $cookieStore.get('userId'));
+                        permissionService.loadPermission($scope, result.id, $cookies.get('userId'));
                         $rootScope.breadcrumb = breadcrumbService.updateBreadcrumb('project', $scope.project);
                         //$rootScope.$digest();
                     } catch (e) { console.log(e); }
                 });
             $scope.loadWorkflow = function() {
                 workflowService.workflow.get({
-                    where: {
+                    /* where: {
                         name: $scope.project.state
-                    }
+                    } */
                 }).$promise.then(function(result) {
                     $scope.workflows = result[0].next;
                     $scope.currentworkflow = result[0];

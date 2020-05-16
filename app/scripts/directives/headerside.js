@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * @ngdoc directive
@@ -6,13 +6,12 @@
  * @description
  * # headerSide
  */
-angular.module('mockuperApp')
-    .directive('headerSide', function(GlobalService) {
-        return {
-            templateUrl: '/views/templates/headerSide.html',
-            restrict: 'E',
-            link: function postLink(scope, element, attrs) {
-                scope.globalService = GlobalService
-            }
-        };
-    });
+angular.module("mockuperApp").directive("headerSide", function () {
+  return {
+    templateUrl: "/views/templates/headerSide.html",
+    restrict: "E",
+    link: function postLink(scope, element, attrs) {
+      // scope.globalService = GlobalService
+    },
+  };
+});

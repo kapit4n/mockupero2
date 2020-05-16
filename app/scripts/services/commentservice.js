@@ -8,19 +8,19 @@
  * Service in the mockuperApp.
  */
 angular.module('mockuperApp')
-    .service('commentService', ['$resource', '$cookieStore', '$rootScope', 'projectService', 'GlobalService',
-        function($resource, $cookieStore, $rootScope, projectService, GlobalService) {
+    .service('commentService', ['$resource', '$cookies', '$rootScope', 'projectService', 'GlobalService',
+        function($resource, $cookies, $rootScope, projectService, GlobalService) {
             // AngularJS will instantiate a singleton by calling "new" on this function
             var fac = {};
 
-            fac.getComments = $resource(GlobalService.BASE_PATH + '/comment', {}, {
+            fac.getComments = $resource(GlobalService.BASE_PATH + '/comments', {}, {
                 get: {
                     method: 'GET',
                     isArray: true
                 }
             });
 
-            fac.commentById = $resource(GlobalService.BASE_PATH + '/comment/:id', {
+            fac.commentById = $resource(GlobalService.BASE_PATH + '/comments/:id', {
                 id: '@id'
             }, {
                 get: {
@@ -28,19 +28,19 @@ angular.module('mockuperApp')
                 }
             });
 
-            fac.createComment = $resource(GlobalService.BASE_PATH + '/comment/', {}, {
+            fac.createComment = $resource(GlobalService.BASE_PATH + '/comments/', {}, {
                 save: {
                     method: 'POST'
                 }
             });
 
-            fac.updateComment = $resource(GlobalService.BASE_PATH + '/comment/:id', {}, {
+            fac.updateComment = $resource(GlobalService.BASE_PATH + '/comments/:id', {}, {
                 update: {
                     method: 'PUT'
                 }
             });
 
-            fac.deleteComment = $resource(GlobalService.BASE_PATH + '/comment/:id', {}, {
+            fac.deleteComment = $resource(GlobalService.BASE_PATH + '/comments/:id', {}, {
                 delete: {
                     method: 'DELETE'
                 }
@@ -51,7 +51,7 @@ angular.module('mockuperApp')
                     mockupSuggestId: $scope.mockupSuggestId
                     fac.createComment.save({
                         comment: $scope.newComment,
-                        userId: $cookieStore.get('userId'),
+                        userId: $cookies.get('userId'),
                         userName: $rootScope.userNameLogin,
                         relationId: $scope.relationId,
                         relationType: $scope.relationType,
@@ -81,10 +81,10 @@ angular.module('mockuperApp')
 
             fac.reloadComments = function($scope, relationId) {
                 fac.getComments.get({
-                    where: {
+                    /* where: {
                         relationId: relationId
                     },
-                    sort: 'createdAt DESC'
+                    sort: 'createdAt DESC' */
                 }).$promise.then(function(result) {
                     $scope.comments = result;
                 }, function(err) {
@@ -104,10 +104,10 @@ angular.module('mockuperApp')
                             ids.push(project[i].id);
                         }
                         fac.getComments.get({
-                            where: {
+                            /* where: {
                                 relationId: ids
                             },
-                            sort: 'createdAt DESC'
+                            sort: 'createdAt DESC' */
                         }).$promise.then(function(result) {
                             $scope.comments = result;
                         }, function(err) {
@@ -118,8 +118,8 @@ angular.module('mockuperApp')
 
             fac.reloadLastComments = function($scope) {
                 fac.getComments.get({
-                    sort: 'createdAt DESC',
-                    limit: 50
+                    /* sort: 'createdAt DESC',
+                    limit: 50 */
                 }).$promise.then(function(result) {
                     $scope.comments = result;
                 }, function(err) {
@@ -129,14 +129,14 @@ angular.module('mockuperApp')
 
             fac.reloadCommentsByUser = function($scope) {
                 fac.getComments.get({
-                    where: {
+                    /* where: {
                         or: [
                             { relationId: $scope.relationId },
                             { userId: $scope.relationId }
                         ]
                     },
                     sort: 'createdAt DESC',
-                    limit: 50
+                    limit: 50 */
                 }).$promise.then(function(result) {
                     $scope.comments = result;
                 }, function(err) {
