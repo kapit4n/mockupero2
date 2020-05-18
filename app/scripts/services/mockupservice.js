@@ -200,6 +200,16 @@ angular
       }
     );
 
+    fac.saveMockupItem = $resource(
+      GlobalService.BASE_PATH + "/mockupItems",
+      {},
+      {
+        save: {
+          method: "POST",
+        },
+      }
+    );
+
     fac.publishCreate = function ($scope, mockup) {
       $scope.newComment = "Mockup " + mockup.name + " has been Created";
       $scope.relationName = mockup.name;

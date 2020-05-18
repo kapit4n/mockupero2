@@ -31,16 +31,15 @@
         </div>
     </div>
     <a href="/#!/project/{{projectId}}/navigationDiagram" class="btn btn-sm btn-info" role="button">Show Navigation</a>
-    
+
     <presentation></presentation>
 
     <!--     <h3 ng-show="currentworkflow.permission.children.add == 'YES'"> <button type="button" class="btn btn-default" aria-label="Left Align"  ng-click="addMockup()" >
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
           </button></h3>
  -->
- 
-    <h3> <button type="button" class="btn btn-default"
-            aria-label="Left Align" ng-click="addMockup()">
+
+    <h3> <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addMockup()">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </button></h3>
 
@@ -53,7 +52,7 @@
                     <p>
                         <a style="margin-right: 10px;" href="/#!/mockup/{{mockup.id}}"><span
                                 class="glyphicon glyphicon-folder-open"></span></a>
-                        <a ng-show="currentworkflow.permission.children.edit == 'YES'" style="margin-right: 10px;"
+                        <!-- <a ng-show="currentworkflow.permission.children.edit == 'YES'" style="margin-right: 10px;"
                             href="/#!/mockup/edit/{{mockup.id}}" ng-if="editMode"><span
                                 class="glyphicon glyphicon-edit"></span></a>
                         <a ng-show="currentworkflow.permission.children.edit == 'YES'" style="margin-right: 10px;"
@@ -61,6 +60,13 @@
                                 class="glyphicon glyphicon-picture"></span></a>
                         <a ng-show="currentworkflow.permission.children.delete == 'YES'" style="margin-right: 10px;"
                             href="" ng-click="deleteMockup(mockup.id)" role="button"><span
+                                class="glyphicon glyphicon-remove"></span></a> -->
+
+                        <a style="margin-right: 10px;" href="/#!/mockup/edit/{{mockup.id}}" ng-if="editMode"><span
+                                class="glyphicon glyphicon-edit"></span></a>
+                        <a style="margin-right: 10px;" href="/#!/mockup-edit-design/{{mockup.id}}"><span
+                                class="glyphicon glyphicon-picture"></span></a>
+                        <a style="margin-right: 10px;" href="" ng-click="deleteMockup(mockup.id)" role="button"><span
                                 class="glyphicon glyphicon-remove"></span></a>
                     </p>
                 </div>
