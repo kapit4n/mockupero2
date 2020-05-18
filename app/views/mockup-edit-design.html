@@ -119,16 +119,10 @@
 <div id="design-div"
     style="border-width: 2px; border-style: solid; border-color: black; position: absolute; top: 156px; width: {{editObject.width}}px; height: {{editObject.height}}px; left: {{editObject.width < 500 ? 100: (1000/editObject.width * 280)}}px; background: white;">
 
-    XXXXXXXXXXXXXXXXXXXXXXX
-    <div ng-repeat="ite in mockupItems">
-        YYYYYYYYYYYYYYYYYYYYYYYYYYyyy
-        {{ite.type}}
-        {{ite.type}}{{ite.id}}
-        <img ng-if="ite.type == 'image'" id="{{ite.type}}{{ite.id}}" alt="" context-menu
-            data-target="menu-image-{{ite.id}}" class="{{itemStyle}}"
-            style="padding:0; position: absolute; z-index:{{ite.position}}; width: {{ite.width}}px; height: {{ite.height}}px; top: {{ite.top}}px; left: {{ite.left}}px;"
-            src="{{ite.src || srcPlaceholder}}" alt="..." height="">
-    </div>
+    <img ng-repeat="ite in mockupItems" ng-if="ite.type == 'image'" id="{{ite.type}}{{ite.id}}" alt="" context-menu
+        data-target="menu-image-{{ite.id}}" class="{{itemStyle}}"
+        style="padding:0; position: absolute; z-index:{{ite.position}}; width: {{ite.width}}px; height: {{ite.height}}px; top: {{ite.top}}px; left: {{ite.left}}px;"
+        src="{{ite.src || srcPlaceholder}}" alt="..." height="">
 
 
 

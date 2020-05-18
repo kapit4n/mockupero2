@@ -55,7 +55,8 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
     $scope.logingLog = {};
     $scope.error = "";
     $scope.versionMockups = [];
-    $scope.srcPlaceholder = "https://stat.overdrive.in/wp-content/uploads/2019/03/Tata-H2X-14.jpg";
+    $scope.srcPlaceholder =
+      "https://stat.overdrive.in/wp-content/uploads/2019/03/Tata-H2X-14.jpg";
 
     $scope.loadMockupItems = function () {
       var mockupId = $scope.editObject.id;
@@ -183,7 +184,7 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
     }
 
     // Some source code to save min image that we are to use on the mockup preview and version of the mockup
-    $scope.createImage = function () {
+    /*$scope.createImage = function () {
       html2canvas($("#design-div"), {
         onrendered: function (canvas) {
           var ctx = canvas.getContext("2d");
@@ -195,10 +196,12 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
               mockupId: $scope.editObject.id,
             },
             function (result) {}
-          ); */
+          ); 
         },
       });
     };
+*/
+
     $scope.loadWorkflow = function () {
       workflowService.workflow
         .get({
@@ -310,7 +313,7 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
     // copy the items with the mockupSuggest id
     // open that mockup that will be the suggest
     $scope.save = function () {
-      if ($scope.editObject.isSuggest) {
+      /* if ($scope.editObject.isSuggest) {
         mockupService.publishSuggestUpdate($scope, $scope.editObject);
       } else {
         mockupService.publishUpdate($scope, $scope.editObject);
@@ -318,43 +321,95 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
 
       $("#spinner").show();
       $("#btnSave").prop("disabled", true);
+       */
+      console.log("111111111111111111");
       var myEl = angular.element(document.querySelector("#design-div"));
+      console.log("2222222222222222222");
       var position = 0;
-      if (myEl[0].children.length == 0) {
+      /* if (myEl[0].children.length == 0) {
+        console.log("3333333333333333333")
+        console.log("3333333333333333333")
         $("#spinner").hide();
         $("#btnSave").prop("disabled", false);
-      }
-      $scope.createImage();
-      html2canvas($("#design-div"), {
-        onrendered: function (canvas) {
-          var ctx = canvas.getContext("2d");
-          var dataURL = canvas.toDataURL();
-          // the avatar will be created as usual
-          // mockupService.createMockupItemUploadAvatar.save(
-          // { img: dataURL, mockupId: $scope.editObject.id },
-          // function (result) {
-          var items = [];
-          var toDelete = [];
-          $scope.editObject.links = [];
-          $timeout(function () {
-            angular.forEach(myEl[0].children, function (child) {
-              position++;
-              var item = propertyService.getItem("#" + child.id);
-              // if it is the first time that we save, copy the item
-              // if it is the seconf time or more just update the item.
-              item.mockupId = $scope.editObject.id;
-              if (item.id && item.id.length < 10) {
-                item.id = undefined;
-              }
-              $scope.loadStaticValues(item);
-              items.push(item);
-              if (item.id == undefined) {
-                toDelete.push(child);
-              }
-            });
+      } */
+      // $scope.createImage();
+      //html2canvas($("#design-div"), {
+      //onrendered: function (canvas) {
+      //var ctx = canvas.getContext("2d");
+      //var dataURL = canvas.toDataURL();
+      // the avatar will be created as usual
+      // mockupService.createMockupItemUploadAvatar.save(
+      // { img: dataURL, mockupId: $scope.editObject.id },
+      // function (result) {
+      var items = [];
+      var toDelete = [];
+      $scope.editObject.links = [];
+      console.log("3333333333333333333");
+      $timeout(function () {
+        angular.forEach(myEl[0].children, function (child) {
+          position++;
+          console.log("44444444444444444444");
+          console.log(child);
+          console.log("#" + child.id);
+          var item = propertyService.getItem("#" + child.id);
+          console.log("55555555555555");
+          // if it is the first time that we save, copy the item
+          // if it is the seconf time or more just update the item.
+          console.log("555555555555555");
+          item.mockupId = $scope.editObject.id;
+          if (item.id && item.id.length < 10) {
+            item.id = undefined;
+          }
+          $scope.loadStaticValues(item);
+          console.log("555555555555555");
+          items.push(item);
+          if (item.id == undefined) {
+            toDelete.push(child);
+          }
+        });
 
-            // save all items should use items with new mockupSuggest Id
-            mockupService.saveMockupItem.save({ ...items[0] }, function (
+        // save all items should use items with new mockupSuggest Id
+
+        items
+          .filter((x) => x.idHtml.includes("new"))
+          .forEach((x) => {
+            console.log("save it");
+            console.log(x);
+            mockupService.saveMockupItem.save(
+              {
+                ...x,
+                width: parseFloat(x.width),
+                height: parseFloat(x.height),
+              },
+              function (y) {
+                console.log(y);
+              }
+            );
+          });
+        // see how to get mockup item id
+
+        items
+          .filter((x) => !x.idHtml.includes("new"))
+          .forEach((x) => {
+            console.log("save it");
+            console.log(x);
+            mockupService.updateMockupItem.save(
+              {
+                id: x.id,
+              },
+              {
+                ...x,
+                width: parseFloat(x.width),
+                height: parseFloat(x.height),
+              },
+              function (y) {
+                console.log(y);
+              }
+            );
+          });
+
+        /*
+            mockupService.saveMockupItem.saveY({ ...items[0] }, function (
               result
             ) {
               $timeout(function () {
@@ -385,23 +440,24 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
               }, myEl[0].children.length * 30);
               $scope.loadMockupItems();
             });
-            // what does this code do?
-            mockupService.updateMockup.update(
-              {
-                id: $scope.editObject.id,
-              },
-              $scope.editObject,
-              function (result) {},
-              function (err) {
-                $scope.err = err;
-              }
-            );
-          }, myEl[0].children.length * 50);
-        },
-        //);
-        //},
-      });
+            */
+        // what does this code do?
+        mockupService.updateMockup.update(
+          {
+            id: $scope.editObject.id,
+          },
+          $scope.editObject,
+          function (result) {},
+          function (err) {
+            $scope.err = err;
+          }
+        );
+      }, myEl[0].children.length * 50);
     };
+    //);
+    //},
+    //});
+    //};
 
     // This id has # included in the string
     $scope.getItemId = function (idComp) {
