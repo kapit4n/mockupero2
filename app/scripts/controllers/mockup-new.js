@@ -38,7 +38,7 @@ angular.module("mockuperApp").controller("MockupNewCtrl", [
     $scope.save = function (addObjectForm) {
       if (addObjectForm.$valid) {
         // $scope.newMockup.owner = $cookies.get("userId");
-        $scope.newMockup.projectId = 1;
+        $scope.newMockup.projectId = $routeParams.projectId;
         mockupService.createMockup.save(
           $scope.newMockup,
           function (result) {
