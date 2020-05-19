@@ -237,6 +237,8 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
 
     // This code is duplicated, replace this code using $scope.loadMockupItems();
     $scope.updateInput = function (labelId, idComponent) {
+      console.log("idComponent");
+      console.log(idComponent);
       switch (labelId) {
         case "text":
           var textValue = angular.element(
@@ -352,7 +354,10 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
           console.log(child);
           console.log("#" + child.id);
           var item = propertyService.getItem("#" + child.id);
+
           console.log("55555555555555");
+          console.log("item");
+          console.log(item);
           // if it is the first time that we save, copy the item
           // if it is the seconf time or more just update the item.
           console.log("555555555555555");
@@ -391,19 +396,15 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
         items
           .filter((x) => !x.idHtml.includes("new"))
           .forEach((x) => {
-            console.log("save it");
-            console.log(x);
+            const componentId = x.idHtml.substring(x.type.length);
             mockupService.updateMockupItem.save(
               {
-                id: x.id,
+                id: componentId,
               },
               {
                 ...x,
                 width: parseFloat(x.width),
                 height: parseFloat(x.height),
-              },
-              function (y) {
-                console.log(y);
               }
             );
           });
@@ -461,6 +462,8 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
 
     // This id has # included in the string
     $scope.getItemId = function (idComp) {
+      console.log("get item id");
+      console.log(idComp);
       var idResult = 0;
       if (idComp.indexOf("image") > -1) {
         idResult = idComp.substring(5);
@@ -673,8 +676,6 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
           '<div class="alert" id="wrapper" style="z-index: 100;"> <span class="close" data-dismiss="alert">X</span>' +
           propertyService.container(idComponent, $scope) +
           "</div>";
-      } else {
-        console.log("Here is another error " + idComponent);
       }
       propertiesDiv.html($compile(myComponent)($scope));
     };
