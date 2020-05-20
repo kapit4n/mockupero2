@@ -38,12 +38,14 @@ angular.module("mockuperApp").controller("MockupNewCtrl", [
     $scope.save = function (addObjectForm) {
       if (addObjectForm.$valid) {
         // $scope.newMockup.owner = $cookies.get("userId");
-        $scope.newMockup.projectId = $routeParams.projectId;
+        $scope.newMockup.projectId = parseInt($routeParams.projectId);
+        $scope.newMockup.imgToShow = $scope.imgToShow;
         mockupService.createMockup.save(
           $scope.newMockup,
           function (result) {
             mockupService.publishCreate($scope, result);
-            $window.location.href = "#!/mockup/" + result.id;
+            console.log(result);
+            $window.location.href = "#!/mockup/" + result.ID;
           },
           function (err) {
             $scope.err = err;

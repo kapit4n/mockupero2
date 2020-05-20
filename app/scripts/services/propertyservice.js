@@ -37,6 +37,10 @@ angular.module('mockuperApp')
             item.background = $($(idComp)[0])[0].style.background;
             var position = $(idComp).css("z-index");
             item.position = position;
+
+            console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            console.log($(idComp)[0].id);
+
             item.idHtml = $(idComp)[0].id;
 
             if (idComp.indexOf('image') > -1) {

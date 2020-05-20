@@ -113,7 +113,7 @@ angular.module('mockuperApp')
                         url: 'projectlist'
                     }, {
                         name: '' + (param.name.length > 20 ? param.name.substr(0, 20 - 1) + '...' : param.name),
-                        url: 'project/' + param.id
+                        url: 'project/' + param.Model.ID
                     }];
                     return result;
                     break;
@@ -171,7 +171,7 @@ angular.module('mockuperApp')
                         url: ''
                     }, {
                         name: '' + (param.project.name.length > 20 ? param.project.name.substr(0, 20 - 1) + '...' : param.project.name),
-                        url: 'project/' + param.project.id
+                        url: 'project/' + param.project.Model.ID
                     }, {
                         name: '' + (param.name.length > 20 ? param.name.substr(0, 20 - 1) + '...' : param.name),
                         url: 'mockup/' + param.id

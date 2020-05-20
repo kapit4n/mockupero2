@@ -29,10 +29,10 @@ angular.module('mockuperApp')
             $scope.saveProject = function(editProjectForm) {
                 if (editProjectForm.$valid) {
                     projectService.updateProject.update({
-                        id: $scope.project.id
+                        id: $scope.project.Model.ID
                     }, $scope.project, function(result) {
                         projectService.publishUpdate($scope, result);
-                        $window.location.href = '#!/project/' + $scope.project.id;
+                        $window.location.href = '#!/project/' + $scope.project.Model.ID;
                     }, function(err) {
                         $scope.err = err;
                     });

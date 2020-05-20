@@ -59,7 +59,9 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
       "https://stat.overdrive.in/wp-content/uploads/2019/03/Tata-H2X-14.jpg";
 
     $scope.loadMockupItems = function () {
-      var mockupId = $scope.editObject.id;
+      console.log("$scope.editObject");
+      console.log($scope.editObject);
+      var mockupId = $scope.editObject.Model.ID;
       mockupService.getMockupItems
         .get({
           /* sort: 'position ',
@@ -69,9 +71,9 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
                     limit: 100 */
         })
         .$promise.then(function (result) {
-          $scope.mockupItems = result;
+          $scope.mockupItems = $scope.editObject.mockupItems;
           console.log("Mockup items");
-          console.log(result);
+          console.log($scope.editObject.mockupItems);
           $scope.mockupItems.forEach(function (item) {
             $scope.mockupItemsBykey[item.id] = item;
           });
@@ -356,12 +358,13 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
           var item = propertyService.getItem("#" + child.id);
 
           console.log("55555555555555");
+          delete item.id;
           console.log("item");
           console.log(item);
           // if it is the first time that we save, copy the item
           // if it is the seconf time or more just update the item.
           console.log("555555555555555");
-          item.mockupId = $scope.editObject.id;
+          item.mockupId = $scope.editObject.Model.ID;
           if (item.id && item.id.length < 10) {
             item.id = undefined;
           }
@@ -385,6 +388,7 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
                 ...x,
                 width: parseFloat(x.width),
                 height: parseFloat(x.height),
+                mockupId: $scope.editObject.Model.ID
               },
               function (y) {
                 console.log(y);
@@ -443,6 +447,7 @@ angular.module("mockuperApp").controller("MockupEditDesignCtrl", [
             });
             */
         // what does this code do?
+        return;
         mockupService.updateMockup.update(
           {
             id: $scope.editObject.id,

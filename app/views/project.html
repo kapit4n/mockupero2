@@ -44,13 +44,13 @@
         </button></h3>
 
     <div class="row" style="border: 0;">
-        <div ng-show="!mockup.isSuggest" class="col-xs-6 col-sm-4 col-md-4" ng-repeat="mockup in mockups"
+        <div ng-show="!mockup.isSuggest" class="col-xs-6 col-sm-4 col-md-4" ng-repeat="mockup in project.mockups"
             style="height: 250px; border: 5px; padding: 10px;">
             <div class="thumbnail" style="height: 250px; background: #aeb2ae;">
                 <div class="caption">
                     <h4>{{mockup.name | cut:true:10:' ...'}}</h4>
                     <p>
-                        <a style="margin-right: 10px;" href="/#!/mockup/{{mockup.id}}"><span
+                        <a style="margin-right: 10px;" href="/#!/mockup/{{mockup.ID}}"><span
                                 class="glyphicon glyphicon-folder-open"></span></a>
                         <!-- <a ng-show="currentworkflow.permission.children.edit == 'YES'" style="margin-right: 10px;"
                             href="/#!/mockup/edit/{{mockup.id}}" ng-if="editMode"><span
@@ -62,9 +62,9 @@
                             href="" ng-click="deleteMockup(mockup.id)" role="button"><span
                                 class="glyphicon glyphicon-remove"></span></a> -->
 
-                        <a style="margin-right: 10px;" href="/#!/mockup/edit/{{mockup.id}}" ng-if="editMode"><span
+                        <a style="margin-right: 10px;" href="/#!/mockup/edit/{{mockup.ID}}" ng-if="editMode"><span
                                 class="glyphicon glyphicon-edit"></span></a>
-                        <a style="margin-right: 10px;" href="/#!/mockup-edit-design/{{mockup.id}}"><span
+                        <a style="margin-right: 10px;" href="/#!/mockup-edit-design/{{mockup.ID}}"><span
                                 class="glyphicon glyphicon-picture"></span></a>
                         <a style="margin-right: 10px;" href="" ng-click="deleteMockup(mockup.id)" role="button"><span
                                 class="glyphicon glyphicon-remove"></span></a>
