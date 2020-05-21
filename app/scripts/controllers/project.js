@@ -9,7 +9,6 @@
  */
 angular.module("mockuperApp").controller("ProjectCtrl", [
   "$scope",
-  "$rootScope",
   "$cookies",
   "mockupService",
   "loginService",
@@ -25,7 +24,6 @@ angular.module("mockuperApp").controller("ProjectCtrl", [
   "GlobalService",
   function (
     $scope,
-    $rootStore,
     $cookies,
     mockupService,
     loginService,

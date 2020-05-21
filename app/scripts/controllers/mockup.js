@@ -13,7 +13,7 @@ angular.module('mockuperApp')
         function($scope, $cookies, loginService, mockupService, breadcrumbService,
             $routeParams, $rootScope, headerService, permissionService, workflowService, GlobalService) {
             loginService.reloadScope();
-            headerService.updateHeader('projects');
+            headerService.updateHeader('mockup');
             
             $scope.globalService = GlobalService;
             $scope.mockupList = mockupService.mockups;

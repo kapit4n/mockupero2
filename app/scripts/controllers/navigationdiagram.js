@@ -45,15 +45,17 @@ angular.module('mockuperApp')
                                 if ($scope.project.mockups[i].links) {
                                     for (var j = 0; j < $scope.project.mockups[i].links.length; j++) {
                                         linkDataArray.push({
-                                            from: $scope.project.mockups[i].id + "",
+                                            from: $scope.project.mockups[i].ID + "",
                                             to: $scope.project.mockups[i].links[j] + ""
                                         });
                                     }
                                 }
                                 if (i == 0) {
-                                    nodeDataArrayAux.push({ key: $scope.project.mockups[i].id + "", name: "Mockup " + i, source: GlobalService.BASE_PATH + "/images/" + $scope.project.mockups[i].id + ".png" })
+                                    // nodeDataArrayAux.push({ key: $scope.project.mockups[i].ID + "", name: "Mockup " + i, source: GlobalService.BASE_PATH + "/images/" + $scope.project.mockups[i].id + ".png" })
+                                    nodeDataArrayAux.push({ key: $scope.project.mockups[i].ID + "", name: "Mockup " + i, source: $scope.project.mockups[i].imgToShow })
                                 } else {
-                                    nodeDataArrayAux.push({ key: $scope.project.mockups[i].id + "", name: "Mockup " + i, source: GlobalService.BASE_PATH + "/images/" + $scope.project.mockups[i].id + ".png" })
+                                    // nodeDataArrayAux.push({ key: $scope.project.mockups[i].ID + "", name: "Mockup " + i, source: GlobalService.BASE_PATH + "/images/" + $scope.project.mockups[i].id + ".png" })
+                                    nodeDataArrayAux.push({ key: $scope.project.mockups[i].ID + "", name: "Mockup " + i, source: $scope.project.mockups[i].imgToShow })
                                 }
                             }
                         }

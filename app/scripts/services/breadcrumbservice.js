@@ -8,12 +8,12 @@
  * Service in the mockuperApp.
  */
 angular.module('mockuperApp')
-    .service('breadcrumbService', function($rootScope) {
+    .service('breadcrumbService', function ($rootScope) {
         var fac = {};
         /**
          * the param in the object that we want to manage
          */
-        fac.updateBreadcrumb = function(type, param) {
+        fac.updateBreadcrumb = function (type, param) {
             switch (type) {
                 case 'permission-group-list':
                     var result = [{
@@ -163,6 +163,7 @@ angular.module('mockuperApp')
                     return result;
                     break;
                 case 'mockup':
+                    console.log("Mockups 1111111111111111111111111111");
                     var result = [{
                         name: 'Home',
                         url: 'projectlist'
@@ -171,10 +172,10 @@ angular.module('mockuperApp')
                         url: ''
                     }, {
                         name: '' + (param.project.name.length > 20 ? param.project.name.substr(0, 20 - 1) + '...' : param.project.name),
-                        url: 'project/' + param.project.Model.ID
+                        url: 'project/' + param.Model.ID
                     }, {
                         name: '' + (param.name.length > 20 ? param.name.substr(0, 20 - 1) + '...' : param.name),
-                        url: 'mockup/' + param.id
+                        url: 'mockup/' + param.Model.ID
                     }];
                     return result;
                     break;

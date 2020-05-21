@@ -43,8 +43,8 @@ angular.module("mockuperApp").controller("MockupNewCtrl", [
         mockupService.createMockup.save(
           $scope.newMockup,
           function (result) {
-            mockupService.publishCreate($scope, result);
-            console.log(result);
+            // sockers goes here,  mockupService.publishCreate($scope, result);
+            // console.log(result);
             $window.location.href = "#!/mockup/" + result.ID;
           },
           function (err) {
