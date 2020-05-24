@@ -30,9 +30,14 @@
             </div>
         </div>
     </div>
+
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal1"
+        ng-click="fullScreen()"> Presentation</button>
+
+    <!-- Modal -->
+
     <a href="/#!/project/{{projectId}}/navigationDiagram" class="btn btn-sm btn-info" role="button">Show Navigation</a>
 
-    <presentation></presentation>
 
     <!--     <h3 ng-show="currentworkflow.permission.children.add == 'YES'"> <button type="button" class="btn btn-default" aria-label="Left Align"  ng-click="addMockup()" >
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -66,7 +71,7 @@
                                 class="glyphicon glyphicon-edit"></span></a>
                         <a style="margin-right: 10px;" href="/#!/mockup-edit-design/{{mockup.ID}}"><span
                                 class="glyphicon glyphicon-picture"></span></a>
-                        <a style="margin-right: 10px;" href="" ng-click="deleteMockup(mockup.id)" role="button"><span
+                        <a style="margin-right: 10px;" href="" ng-click="deleteMockup(mockup.ID)" role="button"><span
                                 class="glyphicon glyphicon-remove"></span></a>
                     </p>
                 </div>
@@ -81,4 +86,42 @@
         </div>
     </div>
     <comment relation="{{projectId}}" relationtype="project"></comment>
+</div>
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="exitFullScreen()" data-dismiss="modal"
+                    aria-label="Close"><span aria-hidden="true">Exit Presentation</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mockup List Presentation</h4>
+            </div>
+            <div class="modal-body">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li ng-if="!mockup.isSuggest" data-target="#myCarousel" data-slide-to="$index"
+                            class="{{$index == 0? 'active' : ''}}"
+                            ng-repeat="mockup in project.mockups track by $index"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div ng-if="!mockup.isSuggest" class="item {{$index == 0? 'active' : ''}}"
+                            ng-repeat="mockup in project.mockups track by $index">
+                            <img src="{{mockup.imgToShow}}" alt="Chania">
+                        </div>
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="" ng-click="goPrev()" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="" ng-click="goNext()" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
