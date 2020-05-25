@@ -9,7 +9,7 @@ This project is a collaborative tool to design the user interfaz prototypes of t
 https://github.com/kapit4n/mockupero-ui/wiki
 
 ### Project View
-<img src="https://github.com/kapit4n/mockupero-ui/raw/develop/mockups/mockupero_project_view.png" alt="Drawing" width="80%"/>
+<img src="https://raw.githubusercontent.com/kapit4n/mockupero2/master/mockups/mockupero_test1.png" alt="Drawing" width="80%"/>
 
 ## navigate
 - /project/1
