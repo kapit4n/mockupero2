@@ -48,12 +48,12 @@
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </button></h3>
 
-    <div class="row" style="border: 0;">
-        <div ng-show="!mockup.isSuggest" class="col-xs-6 col-sm-4 col-md-4" ng-repeat="mockup in project.mockups"
+    <div class="row" style="padding: 1rem;">
+        <div ng-show="!mockup.isSuggest" class="col-xs-6 col-sm-4 col-md-3" ng-repeat="mockup in project.mockups"
             style="height: 400px; border: 5px; padding: 10px;">
             <div class="thumbnail" style="height: 400px; background: #aeb2ae;">
                 <div class="caption">
-                    <h4>{{mockup.name | cut:true:10:' ...'}}</h4>
+                    <h4>{{mockup.name | cut:true:20:' ...'}}</h4>
                     <p>
                         <a style="margin-right: 10px;" href="/#!/mockup/{{mockup.ID}}"><span
                                 class="glyphicon glyphicon-folder-open"></span></a>

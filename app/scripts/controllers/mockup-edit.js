@@ -41,6 +41,9 @@ angular.module("mockuperApp").controller("MockupEditCtrl", [
       })
       .$promise.then(function (result) {
         $scope.editObject = result;
+        if (!$scope.editObject.description) {
+          $scope.editObject.description = '...';
+        }
         try {
           $rootScope.breadcrumb = breadcrumbService.updateBreadcrumb(
             "mockup",
