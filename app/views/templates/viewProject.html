@@ -1,7 +1,7 @@
 <h3 class="col-sm-12">{{viewObject.title}} </h3>
 <a class="col-sm-12" href="{{viewObject.parentUrl}}">{{viewObject.parentName}}</a>
 <div class="col-sm-12 col-md-12" style="padding: 0;">
-    <div class="thumbnail" style="padding: 20px; height: 300px;">
+    <div class="thumbnail" style="padding: 20px; height: 32rem;">
         <div class="caption" class="row">
             <div class="col-sm-6 col-md-6">
                 <h4 class="col-sm-6 col-md-6">{{viewObject.name}} </h4>
@@ -19,7 +19,7 @@
                 <div class="col-sm-12">{{viewObject.description | cut:true:300:' ...'}} </div>
             </div>
             <div class="col-sm-6 col-md-6">
-                <img ng-src="{{viewObject.imgToShow}}" width="500" />
+                <img ng-src="{{viewObject.imgToShow}}" height="250" />
             </div>
         </div>
     </div>
