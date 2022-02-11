@@ -4,7 +4,7 @@
   "dependencies": {
     "grunt-cli": "^1.3.1",
     "grunt-karma": "^2.0.0",
-    "karma": "^1.3.0"
+    "karma": "^6.3.14"
   },
   "repository": {},
   "devDependencies": {
@@ -31,7 +31,7 @@
     "grunt-wiredep": "^2.0.0",
     "jasmine-core": "^2.5.2",
     "jshint-stylish": "^1.0.0",
-    "karma": "^1.3.0",
+    "karma": "^6.3.14",
     "karma-chai": "^0.1.0",
     "karma-jasmine": "^1.0.2",
     "karma-mocha": "^1.2.0",
